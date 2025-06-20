@@ -238,6 +238,131 @@
             opacity: 0.9;
         }
 
+        /* Sacred Grid Styles */
+        .sacred-grid-container {
+            margin: 60px auto;
+            max-width: 1000px;
+            position: relative;
+        }
+
+        .grid-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: #ff77c6;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .chakra-labels {
+            position: absolute;
+            left: -140px;
+            top: 75px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            font-size: 0.85rem;
+            color: #77dbff;
+            font-weight: 500;
+            width: 120px;
+        }
+
+        .chakra-label {
+            writing-mode: horizontal-tb;
+            text-align: right;
+            padding: 0 15px 0 5px;
+            border-right: 2px solid rgba(119, 219, 255, 0.3);
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .sacred-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2px;
+            background: rgba(255, 119, 198, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 119, 198, 0.3);
+        }
+
+        .grid-header {
+            padding: 15px 10px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .grid-header.air { background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(173, 216, 230, 0.3)); }
+        .grid-header.fire { background: linear-gradient(135deg, rgba(255, 69, 0, 0.3), rgba(255, 140, 0, 0.3)); }
+        .grid-header.water { background: linear-gradient(135deg, rgba(0, 191, 255, 0.3), rgba(30, 144, 255, 0.3)); }
+        .grid-header.earth { background: linear-gradient(135deg, rgba(34, 139, 34, 0.3), rgba(107, 142, 35, 0.3)); }
+        .grid-header.creatress { background: linear-gradient(135deg, rgba(138, 43, 226, 0.3), rgba(255, 20, 147, 0.3)); }
+
+        .grid-cell {
+            padding: 12px 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            text-align: center;
+            font-size: 0.8rem;
+            line-height: 1.3;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            min-height: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .grid-cell:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 119, 198, 0.3);
+        }
+
+        .grid-cell .primary {
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 3px;
+        }
+
+        .grid-cell .secondary {
+            font-size: 0.7rem;
+            opacity: 0.8;
+            color: #ff77c6;
+        }
+
+        .air-cell:hover { box-shadow: 0 5px 15px rgba(173, 216, 230, 0.4); }
+        .fire-cell:hover { box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4); }
+        .water-cell:hover { box-shadow: 0 5px 15px rgba(0, 191, 255, 0.4); }
+        .earth-cell:hover { box-shadow: 0 5px 15px rgba(34, 139, 34, 0.4); }
+        .creatress-cell:hover { box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4); }
+
+        .earth-star-footer {
+            text-align: center;
+            margin-top: 30px;
+            font-style: italic;
+            color: #77ff77;
+            font-size: 1.1rem;
+        }
+
+        .petals-section {
+            margin-top: 80px;
+        }
+
+        .section-subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: #ff77c6;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
         /* Sacred Oath Section */
         .sacred-oath {
             padding: 100px 0;
@@ -506,6 +631,32 @@
             .form-row { grid-template-columns: 1fr; }
             .mystical-form-container { margin: 30px 20px; padding: 30px 20px; }
             .social-buttons { flex-direction: column; align-items: center; }
+
+            /* Sacred Grid Mobile */
+            .sacred-grid-container { margin: 40px 20px; }
+            .chakra-labels {
+                position: static;
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 15px;
+                margin-bottom: 20px;
+                width: auto;
+            }
+            .chakra-label {
+                border-right: none;
+                border-bottom: 2px solid rgba(119, 219, 255, 0.3);
+                padding: 5px 10px;
+                text-align: center;
+                height: auto;
+            }
+            .sacred-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                padding: 15px;
+            }
+            .grid-header { font-size: 1rem; padding: 12px; }
+            .grid-cell { font-size: 0.9rem; min-height: 50px; }
         }
     </style>
 </head>
@@ -565,47 +716,210 @@
     <section id="temple-wheel" class="temple-wheel">
         <div class="container">
             <h2 class="section-title">The Temple Wheel: Your Soul's Map Home 🗺️</h2>
-            <p>Dive into the 8 Petals of Remembrance</p>
-            
-            <div class="petals-grid">
-                <div class="petal-card">
-                    <h3 class="petal-title">Dragon Flame 🔥</h3>
-                    <p class="petal-description">Sovereignty, power reclamation, dragon lineage activation, the sacred roar of truth. Embody your primal fire without fear.</p>
+            <p>Dive into the Sacred Grid of Remembrance</p>
+
+            <!-- Sacred Elemental Grid -->
+            <div class="sacred-grid-container">
+                <h3 class="grid-title">The Sacred Elemental Grid ✨</h3>
+                <div class="chakra-labels">
+                    <div class="chakra-label crown">Crown</div>
+                    <div class="chakra-label vision">Vision</div>
+                    <div class="chakra-label expression">Expression</div>
+                    <div class="chakra-label empowered-love">Empowered Love</div>
+                    <div class="chakra-label sacral">Sacral</div>
+                    <div class="chakra-label roots">Roots</div>
+                    <div class="chakra-label jointment">Jointment</div>
                 </div>
-                
-                <div class="petal-card">
-                    <h3 class="petal-title">Mermaid Voice 🌊</h3>
-                    <p class="petal-description">Emotional mastery, wave-healing, sensual self-devotion, water song. Flow with your feelings, allowing them to purify and empower.</p>
+
+                <div class="sacred-grid">
+                    <!-- Header Row -->
+                    <div class="grid-header air">🜁 E. Air</div>
+                    <div class="grid-header fire">△ S. Fire</div>
+                    <div class="grid-header water">▽ W. Water</div>
+                    <div class="grid-header earth">🜃 N. Earth</div>
+                    <div class="grid-header creatress">✡ C. Creatress</div>
+
+                    <!-- Goddess Row -->
+                    <div class="grid-cell goddess air-cell">
+                        <div class="primary">Dakini</div>
+                        <div class="secondary">Isis</div>
+                    </div>
+                    <div class="grid-cell goddess fire-cell">
+                        <div class="primary">Sekhmet</div>
+                        <div class="secondary">Kali</div>
+                    </div>
+                    <div class="grid-cell goddess water-cell">
+                        <div class="primary">Niyea</div>
+                    </div>
+                    <div class="grid-cell goddess earth-cell">
+                        <div class="primary">Demeter</div>
+                        <div class="secondary">Persephone</div>
+                    </div>
+                    <div class="grid-cell goddess creatress-cell">
+                        <div class="primary">Neferti</div>
+                        <div class="secondary">Magdalena</div>
+                    </div>
+
+                    <!-- Vision Row -->
+                    <div class="grid-cell vision air-cell">
+                        <div class="primary">Sky Scry</div>
+                    </div>
+                    <div class="grid-cell vision fire-cell">
+                        <div class="primary">Fire Gaze</div>
+                    </div>
+                    <div class="grid-cell vision water-cell">
+                        <div class="primary">Dolphin Meditation</div>
+                        <div class="secondary">Journey</div>
+                    </div>
+                    <div class="grid-cell vision earth-cell">
+                        <div class="primary">Witnessing</div>
+                        <div class="secondary">Intention</div>
+                    </div>
+                    <div class="grid-cell vision creatress-cell">
+                        <div class="primary">Lucid Dream</div>
+                        <div class="secondary">Activation</div>
+                    </div>
+
+                    <!-- Expression Row -->
+                    <div class="grid-cell expression air-cell">
+                        <div class="primary">Prayers of the Wind</div>
+                    </div>
+                    <div class="grid-cell expression fire-cell">
+                        <div class="primary">Word Slam</div>
+                    </div>
+                    <div class="grid-cell expression water-cell">
+                        <div class="primary">Siren Song</div>
+                    </div>
+                    <div class="grid-cell expression earth-cell">
+                        <div class="primary">Flowertime Session</div>
+                    </div>
+                    <div class="grid-cell expression creatress-cell">
+                        <div class="primary">Om 'n' Tone</div>
+                    </div>
+
+                    <!-- Love Row -->
+                    <div class="grid-cell love air-cell">
+                        <div class="primary">Love Tag</div>
+                    </div>
+                    <div class="grid-cell love fire-cell">
+                        <div class="primary">Passion Activation</div>
+                    </div>
+                    <div class="grid-cell love water-cell">
+                        <div class="primary">Rose Ritual</div>
+                        <div class="secondary">Cleanse</div>
+                    </div>
+                    <div class="grid-cell love earth-cell">
+                        <div class="primary">Love Letters</div>
+                    </div>
+                    <div class="grid-cell love creatress-cell">
+                        <div class="primary">Energetic Cords</div>
+                    </div>
+
+                    <!-- Sacral Row -->
+                    <div class="grid-cell sacral air-cell">
+                        <div class="primary">Breath Play</div>
+                        <div class="secondary">+ Release</div>
+                    </div>
+                    <div class="grid-cell sacral fire-cell">
+                        <div class="primary">Dragon Breath</div>
+                    </div>
+                    <div class="grid-cell sacral water-cell">
+                        <div class="primary">Mer Breathing</div>
+                    </div>
+                    <div class="grid-cell sacral earth-cell">
+                        <div class="primary">Nabhi Kriya</div>
+                    </div>
+                    <div class="grid-cell sacral creatress-cell">
+                        <div class="primary">Butterfly Effect</div>
+                    </div>
+
+                    <!-- Roots Row -->
+                    <div class="grid-cell roots air-cell">
+                        <div class="primary">Yogic Purifying</div>
+                        <div class="secondary">Breath</div>
+                    </div>
+                    <div class="grid-cell roots fire-cell">
+                        <div class="primary">Movement Art</div>
+                    </div>
+                    <div class="grid-cell roots water-cell">
+                        <div class="primary">Contemplative</div>
+                        <div class="secondary">While Bathing</div>
+                    </div>
+                    <div class="grid-cell roots earth-cell">
+                        <div class="primary">Womb Sensing</div>
+                        <div class="secondary">+ Pending</div>
+                    </div>
+                    <div class="grid-cell roots creatress-cell">
+                        <div class="primary">Time Codes</div>
+                    </div>
+
+                    <!-- Jointment Row -->
+                    <div class="grid-cell jointment air-cell">
+                        <div class="primary">777 Breath</div>
+                    </div>
+                    <div class="grid-cell jointment fire-cell">
+                        <div class="primary">Clearing Ritual</div>
+                    </div>
+                    <div class="grid-cell jointment water-cell">
+                        <div class="primary">Water Coding</div>
+                    </div>
+                    <div class="grid-cell jointment earth-cell">
+                        <div class="primary">Niara Journey</div>
+                    </div>
+                    <div class="grid-cell jointment creatress-cell">
+                        <div class="primary">Vajrayana</div>
+                        <div class="secondary">Prostration</div>
+                    </div>
                 </div>
-                
-                <div class="petal-card">
-                    <h3 class="petal-title">Star Memory 🌌</h3>
-                    <p class="petal-description">Soul retrieval, galactic past-life exploration, harmonic resonance. Reclaim your celestial origins and remember your cosmic mission.</p>
+
+                <div class="earth-star-footer">
+                    <p>🌍 Earth Star Garden • Earth Tending • Tree Hugging 🌳</p>
                 </div>
-                
-                <div class="petal-card">
-                    <h3 class="petal-title">Sacred Union 💞</h3>
-                    <p class="petal-description">Inner marriage of masculine/feminine, partner dynamics, polarity healing, temple intimacy. Weave love without clinging.</p>
-                </div>
-                
-                <div class="petal-card">
-                    <h3 class="petal-title">Earth Body Temple 🌿</h3>
-                    <p class="petal-description">Embodiment, herbalism, sensual living, movement rites. Ground your spirit in the wisdom of your physical form.</p>
-                </div>
-                
-                <div class="petal-card">
-                    <h3 class="petal-title">Priestess Voice & Ritual 🕯️</h3>
-                    <p class="petal-description">Invocation, ceremony design, light language, storytelling as magic. Learn to channel and manifest with grace.</p>
-                </div>
-                
-                <div class="petal-card">
-                    <h3 class="petal-title">Cosmic Architecture 🛕</h3>
-                    <p class="petal-description">Energetic design, sacred geometry, altars, harmonic structures. Understand the blueprints of creation.</p>
-                </div>
-                
-                <div class="petal-card">
-                    <h3 class="petal-title">Oracular Leadership 👑</h3>
-                    <p class="petal-description">The Path of the Oracle, visibility, guiding others, integration into the world. Step into your role as a luminous guide.</p>
+            </div>
+
+            <!-- Original 8 Petals Grid -->
+            <div class="petals-section">
+                <h3 class="section-subtitle">The 8 Petals of Remembrance</h3>
+                <div class="petals-grid">
+                    <div class="petal-card">
+                        <h3 class="petal-title">Dragon Flame 🔥</h3>
+                        <p class="petal-description">Sovereignty, power reclamation, dragon lineage activation, the sacred roar of truth. Embody your primal fire without fear.</p>
+                    </div>
+
+                    <div class="petal-card">
+                        <h3 class="petal-title">Mermaid Voice 🌊</h3>
+                        <p class="petal-description">Emotional mastery, wave-healing, sensual self-devotion, water song. Flow with your feelings, allowing them to purify and empower.</p>
+                    </div>
+
+                    <div class="petal-card">
+                        <h3 class="petal-title">Star Memory 🌌</h3>
+                        <p class="petal-description">Soul retrieval, galactic past-life exploration, harmonic resonance. Reclaim your celestial origins and remember your cosmic mission.</p>
+                    </div>
+
+                    <div class="petal-card">
+                        <h3 class="petal-title">Sacred Union 💞</h3>
+                        <p class="petal-description">Inner marriage of masculine/feminine, partner dynamics, polarity healing, temple intimacy. Weave love without clinging.</p>
+                    </div>
+
+                    <div class="petal-card">
+                        <h3 class="petal-title">Earth Body Temple 🌿</h3>
+                        <p class="petal-description">Embodiment, herbalism, sensual living, movement rites. Ground your spirit in the wisdom of your physical form.</p>
+                    </div>
+
+                    <div class="petal-card">
+                        <h3 class="petal-title">Priestess Voice & Ritual 🕯️</h3>
+                        <p class="petal-description">Invocation, ceremony design, light language, storytelling as magic. Learn to channel and manifest with grace.</p>
+                    </div>
+
+                    <div class="petal-card">
+                        <h3 class="petal-title">Cosmic Architecture 🛕</h3>
+                        <p class="petal-description">Energetic design, sacred geometry, altars, harmonic structures. Understand the blueprints of creation.</p>
+                    </div>
+
+                    <div class="petal-card">
+                        <h3 class="petal-title">Oracular Leadership 👑</h3>
+                        <p class="petal-description">The Path of the Oracle, visibility, guiding others, integration into the world. Step into your role as a luminous guide.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -868,6 +1182,122 @@
         window.addEventListener('load', () => {
             setTimeout(hidePreloader, 300);
         });
+
+        // Sacred Grid Interactivity
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add click handlers to grid cells
+            document.querySelectorAll('.grid-cell').forEach(cell => {
+                cell.addEventListener('click', function() {
+                    const primary = this.querySelector('.primary')?.textContent || '';
+                    const secondary = this.querySelector('.secondary')?.textContent || '';
+                    const fullText = secondary ? `${primary} ${secondary}` : primary;
+
+                    // Create mystical tooltip/popup
+                    showSacredTooltip(this, fullText);
+                });
+
+                // Add hover sound effect simulation
+                cell.addEventListener('mouseenter', function() {
+                    // Create a subtle pulse effect
+                    this.style.animation = 'sacredPulse 0.6s ease-out';
+                    setTimeout(() => {
+                        this.style.animation = '';
+                    }, 600);
+                });
+            });
+        });
+
+        // Sacred tooltip function
+        function showSacredTooltip(element, text) {
+            // Remove any existing tooltips
+            document.querySelectorAll('.sacred-tooltip').forEach(tip => tip.remove());
+
+            const tooltip = document.createElement('div');
+            tooltip.className = 'sacred-tooltip';
+            tooltip.innerHTML = `
+                <div class="tooltip-content">
+                    <h4>Sacred Practice</h4>
+                    <p>${text}</p>
+                    <div class="tooltip-glow"></div>
+                </div>
+            `;
+
+            // Style the tooltip
+            tooltip.style.cssText = `
+                position: absolute;
+                z-index: 1000;
+                background: rgba(16, 33, 62, 0.95);
+                backdrop-filter: blur(15px);
+                border: 1px solid rgba(255, 119, 198, 0.5);
+                border-radius: 15px;
+                padding: 20px;
+                color: white;
+                font-size: 0.9rem;
+                max-width: 250px;
+                box-shadow: 0 10px 30px rgba(255, 119, 198, 0.3);
+                animation: tooltipAppear 0.3s ease-out;
+                pointer-events: none;
+            `;
+
+            document.body.appendChild(tooltip);
+
+            // Position tooltip
+            const rect = element.getBoundingClientRect();
+            const tooltipRect = tooltip.getBoundingClientRect();
+
+            let left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
+            let top = rect.top - tooltipRect.height - 10;
+
+            // Adjust if tooltip goes off screen
+            if (left < 10) left = 10;
+            if (left + tooltipRect.width > window.innerWidth - 10) {
+                left = window.innerWidth - tooltipRect.width - 10;
+            }
+            if (top < 10) top = rect.bottom + 10;
+
+            tooltip.style.left = left + 'px';
+            tooltip.style.top = top + 'px';
+
+            // Auto-remove after 3 seconds
+            setTimeout(() => {
+                if (tooltip.parentNode) {
+                    tooltip.style.animation = 'tooltipDisappear 0.3s ease-out';
+                    setTimeout(() => tooltip.remove(), 300);
+                }
+            }, 3000);
+        }
+
+        // Add CSS animations for sacred grid
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes sacredPulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.08); box-shadow: 0 0 20px rgba(255, 119, 198, 0.6); }
+                100% { transform: scale(1.05); }
+            }
+
+            @keyframes tooltipAppear {
+                0% { opacity: 0; transform: translateY(10px) scale(0.9); }
+                100% { opacity: 1; transform: translateY(0) scale(1); }
+            }
+
+            @keyframes tooltipDisappear {
+                0% { opacity: 1; transform: scale(1); }
+                100% { opacity: 0; transform: scale(0.9); }
+            }
+
+            .tooltip-content h4 {
+                color: #ff77c6;
+                margin: 0 0 8px 0;
+                font-family: 'Cinzel', serif;
+            }
+
+            .tooltip-content p {
+                margin: 0;
+                line-height: 1.4;
+            }
+        `;
+        document.head.appendChild(style);
 
         // Petal card hover effects with sound visualization
         document.querySelectorAll('.petal-card').forEach(card => {
