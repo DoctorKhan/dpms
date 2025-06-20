@@ -253,33 +253,25 @@
             margin-bottom: 40px;
         }
 
-        .chakra-labels {
-            position: absolute;
-            left: -140px;
-            top: 75px;
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
+        .chakra-label {
             font-size: 0.85rem;
             color: #77dbff;
             font-weight: 500;
-            width: 120px;
-        }
-
-        .chakra-label {
-            writing-mode: horizontal-tb;
-            text-align: right;
-            padding: 0 15px 0 5px;
-            border-right: 2px solid rgba(119, 219, 255, 0.3);
-            height: 72px;
             display: flex;
             align-items: center;
             justify-content: flex-end;
+            padding-right: 10px;
+            background: transparent;
+            border-right: 2px solid rgba(119, 219, 255, 0.3);
+        }
+
+        .chakra-header {
+            background: transparent;
         }
 
         .sacred-grid {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: 120px repeat(5, 1fr);
             gap: 2px;
             background: rgba(255, 119, 198, 0.1);
             border-radius: 15px;
@@ -634,26 +626,13 @@
 
             /* Sacred Grid Mobile */
             .sacred-grid-container { margin: 40px 20px; }
-            .chakra-labels {
-                position: static;
-                flex-direction: row;
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 15px;
-                margin-bottom: 20px;
-                width: auto;
-            }
-            .chakra-label {
-                border-right: none;
-                border-bottom: 2px solid rgba(119, 219, 255, 0.3);
-                padding: 5px 10px;
-                text-align: center;
-                height: auto;
-            }
             .sacred-grid {
                 grid-template-columns: 1fr;
                 gap: 10px;
                 padding: 15px;
+            }
+            .chakra-label {
+                display: none; /* Hide chakra labels on mobile for cleaner layout */
             }
             .grid-header { font-size: 1rem; padding: 12px; }
             .grid-cell { font-size: 0.9rem; min-height: 50px; }
@@ -721,25 +700,18 @@
             <!-- Sacred Elemental Grid -->
             <div class="sacred-grid-container">
                 <h3 class="grid-title">The Sacred Elemental Grid ✨</h3>
-                <div class="chakra-labels">
-                    <div class="chakra-label crown">Crown</div>
-                    <div class="chakra-label vision">Vision</div>
-                    <div class="chakra-label expression">Expression</div>
-                    <div class="chakra-label empowered-love">Empowered Love</div>
-                    <div class="chakra-label sacral">Sacral</div>
-                    <div class="chakra-label roots">Roots</div>
-                    <div class="chakra-label jointment">Jointment</div>
-                </div>
 
                 <div class="sacred-grid">
                     <!-- Header Row -->
+                    <div class="chakra-header"></div>
                     <div class="grid-header air">🜁 E. Air</div>
                     <div class="grid-header fire">△ S. Fire</div>
                     <div class="grid-header water">▽ W. Water</div>
                     <div class="grid-header earth">🜃 N. Earth</div>
                     <div class="grid-header creatress">✡ C. Creatress</div>
 
-                    <!-- Goddess Row -->
+                    <!-- Crown Row -->
+                    <div class="chakra-label">Crown</div>
                     <div class="grid-cell goddess air-cell">
                         <div class="primary">Dakini</div>
                         <div class="secondary">Isis</div>
@@ -761,6 +733,7 @@
                     </div>
 
                     <!-- Vision Row -->
+                    <div class="chakra-label">Vision</div>
                     <div class="grid-cell vision air-cell">
                         <div class="primary">Sky Scry</div>
                     </div>
@@ -781,6 +754,7 @@
                     </div>
 
                     <!-- Expression Row -->
+                    <div class="chakra-label">Expression</div>
                     <div class="grid-cell expression air-cell">
                         <div class="primary">Prayers of the Wind</div>
                     </div>
@@ -798,6 +772,7 @@
                     </div>
 
                     <!-- Love Row -->
+                    <div class="chakra-label">Empowered Love</div>
                     <div class="grid-cell love air-cell">
                         <div class="primary">Love Tag</div>
                     </div>
@@ -816,6 +791,7 @@
                     </div>
 
                     <!-- Sacral Row -->
+                    <div class="chakra-label">Sacral</div>
                     <div class="grid-cell sacral air-cell">
                         <div class="primary">Breath Play</div>
                         <div class="secondary">+ Release</div>
@@ -834,6 +810,7 @@
                     </div>
 
                     <!-- Roots Row -->
+                    <div class="chakra-label">Roots</div>
                     <div class="grid-cell roots air-cell">
                         <div class="primary">Yogic Purifying</div>
                         <div class="secondary">Breath</div>
@@ -854,6 +831,7 @@
                     </div>
 
                     <!-- Jointment Row -->
+                    <div class="chakra-label">Jointment</div>
                     <div class="grid-cell jointment air-cell">
                         <div class="primary">777 Breath</div>
                     </div>
