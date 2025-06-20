@@ -940,16 +940,25 @@
             }
         });
 
-        // Mystical typing effect for the oath
-        function typeWriter(element, text, speed = 50) {
-            let i = 0;
+        // Mystical typing effect for the oath (preserving HTML formatting)
+        function typeWriter(element, speed = 80) {
+            const originalHTML = element.innerHTML;
             element.innerHTML = '';
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
 
+            let i = 0;
             function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
+                if (i < originalHTML.length) {
+                    element.innerHTML = originalHTML.substring(0, i + 1);
                     i++;
                     setTimeout(type, speed);
+                } else {
+                    // Add a subtle glow effect when typing is complete
+                    element.style.textShadow = '0 0 10px rgba(255, 119, 198, 0.5)';
+                    setTimeout(() => {
+                        element.style.textShadow = 'none';
+                    }, 2000);
                 }
             }
             type();
@@ -964,13 +973,13 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-
-                    // Special effect for oath section
                     if (entry.target.classList.contains('oath-text')) {
-                        const oathText = entry.target.textContent;
-                        typeWriter(entry.target, oathText, 80);
+                        // Special typing effect for oath
+                        typeWriter(entry.target, 60);
+                    } else {
+                        // Regular fade-in animation for other elements
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
                     }
                 }
             });
