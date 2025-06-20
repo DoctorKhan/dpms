@@ -940,31 +940,7 @@
             }
         });
 
-        // Mystical typing effect for the oath (preserving HTML formatting)
-        function typeWriter(element, speed = 80) {
-            const originalHTML = element.innerHTML;
-            element.innerHTML = '';
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0)';
-
-            let i = 0;
-            function type() {
-                if (i < originalHTML.length) {
-                    element.innerHTML = originalHTML.substring(0, i + 1);
-                    i++;
-                    setTimeout(type, speed);
-                } else {
-                    // Add a subtle glow effect when typing is complete
-                    element.style.textShadow = '0 0 10px rgba(255, 119, 198, 0.5)';
-                    setTimeout(() => {
-                        element.style.textShadow = 'none';
-                    }, 2000);
-                }
-            }
-            type();
-        }
-
-        // Intersection Observer for animations
+        // Intersection Observer for smooth animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -973,13 +949,17 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+
+                    // Add special mystical glow effect for oath
                     if (entry.target.classList.contains('oath-text')) {
-                        // Special typing effect for oath
-                        typeWriter(entry.target, 60);
-                    } else {
-                        // Regular fade-in animation for other elements
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
+                        setTimeout(() => {
+                            entry.target.style.textShadow = '0 0 15px rgba(255, 119, 198, 0.4)';
+                            setTimeout(() => {
+                                entry.target.style.textShadow = '0 0 5px rgba(255, 119, 198, 0.2)';
+                            }, 1500);
+                        }, 800);
                     }
                 }
             });
@@ -990,7 +970,7 @@
             document.querySelectorAll('.petal-card, .oath-text, .welcome-message').forEach(el => {
                 el.style.opacity = '0';
                 el.style.transform = 'translateY(30px)';
-                el.style.transition = 'all 0.8s ease';
+                el.style.transition = 'all 1.2s ease';
                 observer.observe(el);
             });
         });
