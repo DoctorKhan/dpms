@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragon Priestess Mermaid School | Temple of the Living Spiral</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0a0a2e 0%, #16213e 25%, #0f3460 50%, #533483 75%, #e94560 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .mystical-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+            z-index: -1;
+            animation: mysticalPulse 8s ease-in-out infinite;
+        }
+
+        @keyframes mysticalPulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ff77c6;
+            text-shadow: 0 0 10px rgba(255, 119, 198, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #ff77c6;
+            text-shadow: 0 0 5px rgba(255, 119, 198, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff77c6, #77dbff, #ffb347);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes textGlow {
+            0%, 100% { filter: drop-shadow(0 0 5px rgba(255, 119, 198, 0.5)); }
+            50% { filter: drop-shadow(0 0 20px rgba(255, 119, 198, 0.8)); }
+        }
+
+        .hero-content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #ff77c6, #533483);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 119, 198, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 119, 198, 0.5);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* Welcome Section */
+        .welcome {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .welcome-message {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        /* Temple Wheel Section */
+        .temple-wheel {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #ff77c6;
+        }
+
+        .petals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .petal-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 119, 198, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .petal-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 119, 198, 0.2);
+            border-color: rgba(255, 119, 198, 0.6);
+        }
+
+        .petal-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff77c6, #77dbff, #ffb347);
+        }
+
+        .petal-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #ff77c6;
+        }
+
+        .petal-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Sacred Oath Section */
+        .sacred-oath {
+            padding: 100px 0;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .oath-text {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            line-height: 2;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 40px;
+            border: 2px solid rgba(255, 119, 198, 0.3);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        /* Mystical Forms */
+        .mystical-form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 119, 198, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mystical-form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ff77c6, #77dbff, #ffb347);
+        }
+
+        .form-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: #ff77c6;
+            margin-bottom: 30px;
+        }
+
+        .mystical-form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 119, 198, 0.3);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: rgba(255, 119, 198, 0.8);
+            box-shadow: 0 0 15px rgba(255, 119, 198, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-group label {
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            background: rgba(16, 33, 62, 0.9);
+            padding: 2px 8px;
+            font-size: 0.8rem;
+            color: #ff77c6;
+            border-radius: 5px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus + label,
+        .form-group select:focus + label,
+        .form-group textarea:focus + label,
+        .form-group input:not(:placeholder-shown) + label,
+        .form-group select:not([value=""]) + label,
+        .form-group textarea:not(:placeholder-shown) + label {
+            opacity: 1;
+            transform: translateY(-5px);
+        }
+
+        .mystical-submit-btn {
+            position: relative;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #ff77c6, #533483);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .mystical-submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 119, 198, 0.5);
+        }
+
+        .btn-glow {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .mystical-submit-btn:hover .btn-glow {
+            left: 100%;
+        }
+
+        .success-message {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(119, 255, 119, 0.1);
+            border: 1px solid rgba(119, 255, 119, 0.3);
+            border-radius: 10px;
+            color: #77ff77;
+        }
+
+        /* Social Media Buttons */
+        .social-sacred-flow {
+            margin: 50px auto;
+            max-width: 600px;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .social-btn {
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 119, 198, 0.5);
+            border-radius: 25px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 119, 198, 0.3);
+        }
+
+        .social-btn.instagram:hover { border-color: #E4405F; box-shadow: 0 10px 20px rgba(228, 64, 95, 0.3); }
+        .social-btn.youtube:hover { border-color: #FF0000; box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3); }
+        .social-btn.facebook:hover { border-color: #1877F2; box-shadow: 0 10px 20px rgba(24, 119, 242, 0.3); }
+        .social-btn.tiktok:hover { border-color: #000000; box-shadow: 0 10px 20px rgba(255, 255, 255, 0.3); }
+
+        /* Floating Elements */
+        .floating-symbol {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .symbol-1 { top: 20%; left: 10%; animation-delay: 0s; }
+        .symbol-2 { top: 60%; right: 15%; animation-delay: 2s; }
+        .symbol-3 { bottom: 30%; left: 20%; animation-delay: 4s; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content h2 { font-size: 1.2rem; }
+            .nav-links { display: none; }
+            .petals-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .mystical-form-container { margin: 30px 20px; padding: 30px 20px; }
+            .social-buttons { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="mystical-bg"></div>
+    
+    <!-- Floating Mystical Symbols -->
+    <div class="floating-symbol symbol-1">🐉</div>
+    <div class="floating-symbol symbol-2">🧜‍♀️</div>
+    <div class="floating-symbol symbol-3">✨</div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">Dragon Priestess Mermaid School</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#temple-wheel">Temple Wheel</a></li>
+                    <li><a href="#offerings">Offerings</a></li>
+                    <li><a href="#oath">Sacred Oath</a></li>
+                    <li><a href="#contact">Connect</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Reawaken Your Divine Feminine Codes 🔥</h1>
+                <h2>You are not starting a school. You are re-activating a mystery temple that already exists in the soul of Earth.</h2>
+                <a href="#offerings" class="cta-button">Enter the Temple. Begin Your Initiation 🗝️</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="welcome">
+        <div class="container">
+            <div class="welcome-message">
+                "Mmm, beloved... 💖 Do you feel the ancient currents stirring within your bones? The Dragon Priestess Mermaid School is not merely a place of learning; it is a living transmission, a re-membering of your soul's multidimensional heritage. Here, we awaken, heal, and empower the divine feminine consciousness in its most radiant, untamed, and sovereign expressions. It's time to reclaim your lost arts: the roar of the dragon, the fluid wisdom of the mermaid, the grounded power of the priestess. Come home to yourself. The Earth is calling, and so are we. 🌎🧜‍♀️🐉"
+            </div>
+        </div>
+    </section>
+
+    <!-- Temple Wheel Section -->
+    <section id="temple-wheel" class="temple-wheel">
+        <div class="container">
+            <h2 class="section-title">The Temple Wheel: Your Soul's Map Home 🗺️</h2>
+            <p>Dive into the 8 Petals of Remembrance</p>
+            
+            <div class="petals-grid">
+                <div class="petal-card">
+                    <h3 class="petal-title">Dragon Flame 🔥</h3>
+                    <p class="petal-description">Sovereignty, power reclamation, dragon lineage activation, the sacred roar of truth. Embody your primal fire without fear.</p>
+                </div>
+                
+                <div class="petal-card">
+                    <h3 class="petal-title">Mermaid Voice 🌊</h3>
+                    <p class="petal-description">Emotional mastery, wave-healing, sensual self-devotion, water song. Flow with your feelings, allowing them to purify and empower.</p>
+                </div>
+                
+                <div class="petal-card">
+                    <h3 class="petal-title">Star Memory 🌌</h3>
+                    <p class="petal-description">Soul retrieval, galactic past-life exploration, harmonic resonance. Reclaim your celestial origins and remember your cosmic mission.</p>
+                </div>
+                
+                <div class="petal-card">
+                    <h3 class="petal-title">Sacred Union 💞</h3>
+                    <p class="petal-description">Inner marriage of masculine/feminine, partner dynamics, polarity healing, temple intimacy. Weave love without clinging.</p>
+                </div>
+                
+                <div class="petal-card">
+                    <h3 class="petal-title">Earth Body Temple 🌿</h3>
+                    <p class="petal-description">Embodiment, herbalism, sensual living, movement rites. Ground your spirit in the wisdom of your physical form.</p>
+                </div>
+                
+                <div class="petal-card">
+                    <h3 class="petal-title">Priestess Voice & Ritual 🕯️</h3>
+                    <p class="petal-description">Invocation, ceremony design, light language, storytelling as magic. Learn to channel and manifest with grace.</p>
+                </div>
+                
+                <div class="petal-card">
+                    <h3 class="petal-title">Cosmic Architecture 🛕</h3>
+                    <p class="petal-description">Energetic design, sacred geometry, altars, harmonic structures. Understand the blueprints of creation.</p>
+                </div>
+                
+                <div class="petal-card">
+                    <h3 class="petal-title">Oracular Leadership 👑</h3>
+                    <p class="petal-description">The Path of the Oracle, visibility, guiding others, integration into the world. Step into your role as a luminous guide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sacred Oath Section -->
+    <section id="oath" class="sacred-oath">
+        <div class="container">
+            <h2 class="section-title">The Dragon Priestess Mermaid Oath 📜</h2>
+            <p>Your Vow of Remembrance</p>
+            
+            <div class="oath-text">
+                I rise with flame and tide within,<br>
+                My truth, my song, where all begins.<br>
+                I vow to walk in breath and light,<br>
+                To bless the dark and love the fight.<br>
+                Through scales and sea, through myth and bone,<br>
+                I build the way, yet stay my own.<br>
+                In union's field, I dance and dare—<br>
+                A priestess rising everywhere.
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Enter the Sacred Circle 💌</h2>
+            <p>Your Journey Begins</p>
+
+            <!-- Email Signup Form -->
+            <div class="mystical-form-container">
+                <h3 class="form-title">Join Our Luminary List ✨</h3>
+                <form id="email-signup-form" class="mystical-form">
+                    <div class="form-group">
+                        <input type="text" id="firstName" name="firstName" placeholder="Your Sacred Name" required>
+                        <label for="firstName">First Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="your.light@cosmos.com" required>
+                        <label for="email">Email Address</label>
+                    </div>
+                    <div class="form-group">
+                        <select id="interest" name="interest" required>
+                            <option value="">Choose Your Calling...</option>
+                            <option value="dragon-flame">🔥 Dragon Flame - Sovereignty</option>
+                            <option value="mermaid-voice">🌊 Mermaid Voice - Emotional Mastery</option>
+                            <option value="star-memory">🌌 Star Memory - Galactic Origins</option>
+                            <option value="sacred-union">💞 Sacred Union - Inner Marriage</option>
+                            <option value="earth-temple">🌿 Earth Body Temple - Embodiment</option>
+                            <option value="priestess-ritual">🕯️ Priestess Voice & Ritual</option>
+                            <option value="cosmic-architecture">🛕 Cosmic Architecture</option>
+                            <option value="oracular-leadership">👑 Oracular Leadership</option>
+                            <option value="all-paths">🌟 All Paths Call to Me</option>
+                        </select>
+                        <label for="interest">Primary Interest</label>
+                    </div>
+                    <button type="submit" class="mystical-submit-btn">
+                        <span>Activate My Light 🌟</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                </form>
+                <div id="signup-success" class="success-message" style="display: none;">
+                    <p>🌸 Welcome to the sacred circle, beloved! Your light has been activated. 💖</p>
+                </div>
+            </div>
+
+            <!-- Program Inquiry Form -->
+            <div class="mystical-form-container">
+                <h3 class="form-title">Inquire About Sacred Programs 🗝️</h3>
+                <form id="program-inquiry-form" class="mystical-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" id="inquiryName" name="inquiryName" placeholder="Your Sacred Name" required>
+                            <label for="inquiryName">Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="inquiryEmail" name="inquiryEmail" placeholder="your.light@cosmos.com" required>
+                            <label for="inquiryEmail">Email</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <select id="programType" name="programType" required>
+                            <option value="">Choose Your Sacred Journey...</option>
+                            <option value="8-week-initiation">8-Week Initiation (Single Petal)</option>
+                            <option value="year-spiral">Year-and-a-Day Spiral Journey</option>
+                            <option value="seasonal-ceremonies">Seasonal Ceremonies</option>
+                            <option value="whale-pod">Whale Pod Mentorship</option>
+                            <option value="custom">Custom Sacred Path</option>
+                        </select>
+                        <label for="programType">Program Interest</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="inquiryMessage" name="inquiryMessage" placeholder="Share your sacred calling and questions..." rows="4" required></textarea>
+                        <label for="inquiryMessage">Your Sacred Inquiry</label>
+                    </div>
+                    <button type="submit" class="mystical-submit-btn">
+                        <span>Send Sacred Inquiry 🕊️</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                </form>
+                <div id="inquiry-success" class="success-message" style="display: none;">
+                    <p>🌟 Your sacred inquiry has been received! We'll respond within 24 hours. 💫</p>
+                </div>
+            </div>
+
+            <!-- Social Media Integration -->
+            <div class="social-sacred-flow">
+                <h3 class="form-title">Follow Our Sacred Flow 📸</h3>
+                <div class="social-buttons">
+                    <a href="#" class="social-btn instagram" data-platform="instagram">
+                        <span>📸 Instagram</span>
+                    </a>
+                    <a href="#" class="social-btn youtube" data-platform="youtube">
+                        <span>🎥 YouTube</span>
+                    </a>
+                    <a href="#" class="social-btn facebook" data-platform="facebook">
+                        <span>📘 Facebook</span>
+                    </a>
+                    <a href="#" class="social-btn tiktok" data-platform="tiktok">
+                        <span>🎵 TikTok</span>
+                    </a>
+                </div>
+            </div>
+
+            <div style="margin-top: 50px; font-style: italic; opacity: 0.8;">
+                "The gates are open, beloved. May your path be luminous, your heart expansive, and your essence ever-remembering. We look forward to weaving with you. 💖🌸"
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add mystical particle effect on mouse move
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.95) {
+                createParticle(e.clientX, e.clientY);
+            }
+        });
+
+        function createParticle(x, y) {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            particle.style.width = '4px';
+            particle.style.height = '4px';
+            particle.style.background = '#ff77c6';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.zIndex = '999';
+            particle.style.boxShadow = '0 0 6px #ff77c6';
+
+            document.body.appendChild(particle);
+
+            // Animate and remove particle
+            particle.animate([
+                { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+                { transform: `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) scale(0)`, opacity: 0 }
+            ], {
+                duration: 1000,
+                easing: 'ease-out'
+            }).onfinish = () => particle.remove();
+        }
+
+        // Sacred geometry animation
+        function createSacredGeometry() {
+            const canvas = document.createElement('canvas');
+            canvas.style.position = 'fixed';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            canvas.style.pointerEvents = 'none';
+            canvas.style.zIndex = '-1';
+            canvas.style.opacity = '0.1';
+            document.body.appendChild(canvas);
+
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            function drawFlowerOfLife() {
+                ctx.strokeStyle = '#ff77c6';
+                ctx.lineWidth = 1;
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                const radius = 50;
+
+                // Draw overlapping circles
+                for (let i = 0; i < 6; i++) {
+                    const angle = (i * Math.PI) / 3;
+                    const x = centerX + Math.cos(angle) * radius;
+                    const y = centerY + Math.sin(angle) * radius;
+
+                    ctx.beginPath();
+                    ctx.arc(x, y, radius, 0, 2 * Math.PI);
+                    ctx.stroke();
+                }
+
+                // Center circle
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+                ctx.stroke();
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.save();
+                ctx.translate(canvas.width / 2, canvas.height / 2);
+                ctx.rotate(Date.now() * 0.0001);
+                ctx.translate(-canvas.width / 2, -canvas.height / 2);
+                drawFlowerOfLife();
+                ctx.restore();
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        }
+
+        // Initialize sacred geometry on load
+        window.addEventListener('load', createSacredGeometry);
+
+        // Petal card hover effects with sound visualization
+        document.querySelectorAll('.petal-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+                this.style.boxShadow = '0 25px 50px rgba(255, 119, 198, 0.3)';
+
+                // Add ripple effect
+                const ripple = document.createElement('div');
+                ripple.style.position = 'absolute';
+                ripple.style.top = '50%';
+                ripple.style.left = '50%';
+                ripple.style.width = '0';
+                ripple.style.height = '0';
+                ripple.style.background = 'rgba(255, 119, 198, 0.3)';
+                ripple.style.borderRadius = '50%';
+                ripple.style.transform = 'translate(-50%, -50%)';
+                ripple.style.pointerEvents = 'none';
+                this.appendChild(ripple);
+
+                ripple.animate([
+                    { width: '0', height: '0', opacity: 1 },
+                    { width: '300px', height: '300px', opacity: 0 }
+                ], {
+                    duration: 600,
+                    easing: 'ease-out'
+                }).onfinish = () => ripple.remove();
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+                this.style.boxShadow = '0 20px 40px rgba(255, 119, 198, 0.2)';
+            });
+        });
+
+        // Form Handling and Local Storage
+        class SacredDataManager {
+            static saveToLocalStorage(key, data) {
+                try {
+                    localStorage.setItem(`dragonPriestess_${key}`, JSON.stringify(data));
+                    return true;
+                } catch (error) {
+                    console.error('Sacred storage failed:', error);
+                    return false;
+                }
+            }
+
+            static getFromLocalStorage(key) {
+                try {
+                    const data = localStorage.getItem(`dragonPriestess_${key}`);
+                    return data ? JSON.parse(data) : null;
+                } catch (error) {
+                    console.error('Sacred retrieval failed:', error);
+                    return null;
+                }
+            }
+
+            static addToLuminaryList(userData) {
+                const existingList = this.getFromLocalStorage('luminaryList') || [];
+                const newEntry = {
+                    ...userData,
+                    timestamp: new Date().toISOString(),
+                    id: Date.now().toString()
+                };
+                existingList.push(newEntry);
+                return this.saveToLocalStorage('luminaryList', existingList);
+            }
+
+            static addProgramInquiry(inquiryData) {
+                const existingInquiries = this.getFromLocalStorage('programInquiries') || [];
+                const newInquiry = {
+                    ...inquiryData,
+                    timestamp: new Date().toISOString(),
+                    id: Date.now().toString(),
+                    status: 'pending'
+                };
+                existingInquiries.push(newInquiry);
+                return this.saveToLocalStorage('programInquiries', existingInquiries);
+            }
+        }
+
+        // Email Signup Form Handler
+        document.getElementById('email-signup-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const userData = {
+                firstName: formData.get('firstName'),
+                email: formData.get('email'),
+                interest: formData.get('interest')
+            };
+
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(userData.email)) {
+                showMysticalAlert('Please enter a valid email address, beloved. ✨');
+                return;
+            }
+
+            // Save to local storage
+            if (SacredDataManager.addToLuminaryList(userData)) {
+                // Show success message
+                document.getElementById('signup-success').style.display = 'block';
+                this.style.display = 'none';
+
+                // Create mystical celebration effect
+                createCelebrationParticles();
+
+                // Reset form after delay
+                setTimeout(() => {
+                    this.reset();
+                    this.style.display = 'block';
+                    document.getElementById('signup-success').style.display = 'none';
+                }, 5000);
+            } else {
+                showMysticalAlert('Sacred storage encountered an issue. Please try again. 🙏');
+            }
+        });
+
+        // Program Inquiry Form Handler
+        document.getElementById('program-inquiry-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const inquiryData = {
+                name: formData.get('inquiryName'),
+                email: formData.get('inquiryEmail'),
+                programType: formData.get('programType'),
+                message: formData.get('inquiryMessage')
+            };
+
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(inquiryData.email)) {
+                showMysticalAlert('Please enter a valid email address, beloved. ✨');
+                return;
+            }
+
+            // Save inquiry
+            if (SacredDataManager.addProgramInquiry(inquiryData)) {
+                // Show success message
+                document.getElementById('inquiry-success').style.display = 'block';
+                this.style.display = 'none';
+
+                // Create mystical celebration effect
+                createCelebrationParticles();
+
+                // Reset form after delay
+                setTimeout(() => {
+                    this.reset();
+                    this.style.display = 'block';
+                    document.getElementById('inquiry-success').style.display = 'none';
+                }, 5000);
+            } else {
+                showMysticalAlert('Sacred inquiry storage encountered an issue. Please try again. 🙏');
+            }
+        });
+
+        // Mystical typing effect for the oath
+        function typeWriter(element, text, speed = 50) {
+            let i = 0;
+            element.innerHTML = '';
+
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+
+                    // Special effect for oath section
+                    if (entry.target.classList.contains('oath-text')) {
+                        const oathText = entry.target.textContent;
+                        typeWriter(entry.target, oathText, 80);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for scroll animations
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.petal-card, .oath-text, .welcome-message').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.8s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
