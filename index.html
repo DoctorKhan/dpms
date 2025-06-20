@@ -14,9 +14,15 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #0a0a2e 0%, #16213e 25%, #0f3460 50%, #533483 75%, #e94560 100%);
+            background:
+                linear-gradient(135deg, #0a0a2e 0%, #16213e 25%, #0f3460 50%, #533483 75%, #e94560 100%),
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.1) 0%, transparent 50%);
+            background-attachment: fixed;
             color: #fff;
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
         .mystical-bg {
@@ -25,16 +31,17 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
+            background:
                 radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
                 radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
             z-index: -1;
             animation: mysticalPulse 8s ease-in-out infinite;
+            will-change: opacity;
         }
 
         @keyframes mysticalPulse {
-            0%, 100% { opacity: 0.7; }
+            0%, 100% { opacity: 0.8; }
             50% { opacity: 1; }
         }
 
@@ -433,6 +440,46 @@
         .social-btn.facebook:hover { border-color: #1877F2; box-shadow: 0 10px 20px rgba(24, 119, 242, 0.3); }
         .social-btn.tiktok:hover { border-color: #000000; box-shadow: 0 10px 20px rgba(255, 255, 255, 0.3); }
 
+        /* Preloader */
+        .mystical-preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0a2e 0%, #16213e 25%, #0f3460 50%, #533483 75%, #e94560 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .mystical-preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .preloader-content {
+            text-align: center;
+            color: #ff77c6;
+        }
+
+        .mystical-spinner {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(255, 119, 198, 0.3);
+            border-top: 3px solid #ff77c6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         /* Floating Elements */
         .floating-symbol {
             position: absolute;
@@ -463,8 +510,16 @@
     </style>
 </head>
 <body>
+    <!-- Mystical Preloader -->
+    <div class="mystical-preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="mystical-spinner"></div>
+            <p>Awakening the Sacred Temple... ✨</p>
+        </div>
+    </div>
+
     <div class="mystical-bg"></div>
-    
+
     <!-- Floating Mystical Symbols -->
     <div class="floating-symbol symbol-1">🐉</div>
     <div class="floating-symbol symbol-2">🧜‍♀️</div>
@@ -725,7 +780,7 @@
             }).onfinish = () => particle.remove();
         }
 
-        // Sacred geometry animation
+        // Sacred geometry animation (optimized)
         function createSacredGeometry() {
             const canvas = document.createElement('canvas');
             canvas.style.position = 'fixed';
@@ -734,20 +789,27 @@
             canvas.style.width = '100%';
             canvas.style.height = '100%';
             canvas.style.pointerEvents = 'none';
-            canvas.style.zIndex = '-1';
-            canvas.style.opacity = '0.1';
+            canvas.style.zIndex = '-2';
+            canvas.style.opacity = '0.08';
+            canvas.style.willChange = 'transform';
             document.body.appendChild(canvas);
 
             const ctx = canvas.getContext('2d');
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
 
             function drawFlowerOfLife() {
                 ctx.strokeStyle = '#ff77c6';
-                ctx.lineWidth = 1;
+                ctx.lineWidth = 0.8;
                 const centerX = canvas.width / 2;
                 const centerY = canvas.height / 2;
-                const radius = 50;
+                const radius = 40;
 
                 // Draw overlapping circles
                 for (let i = 0; i < 6; i++) {
@@ -766,22 +828,46 @@
                 ctx.stroke();
             }
 
-            function animate() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.save();
-                ctx.translate(canvas.width / 2, canvas.height / 2);
-                ctx.rotate(Date.now() * 0.0001);
-                ctx.translate(-canvas.width / 2, -canvas.height / 2);
-                drawFlowerOfLife();
-                ctx.restore();
+            let lastTime = 0;
+            function animate(currentTime) {
+                if (currentTime - lastTime > 50) { // Throttle to ~20fps for performance
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.save();
+                    ctx.translate(canvas.width / 2, canvas.height / 2);
+                    ctx.rotate(currentTime * 0.0001);
+                    ctx.translate(-canvas.width / 2, -canvas.height / 2);
+                    drawFlowerOfLife();
+                    ctx.restore();
+                    lastTime = currentTime;
+                }
                 requestAnimationFrame(animate);
             }
 
-            animate();
+            animate(0);
         }
 
-        // Initialize sacred geometry on load
-        window.addEventListener('load', createSacredGeometry);
+        // Preloader and initialization
+        function hidePreloader() {
+            const preloader = document.getElementById('preloader');
+            preloader.classList.add('hidden');
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500);
+        }
+
+        // Initialize everything when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            // Start sacred geometry
+            createSacredGeometry();
+
+            // Hide preloader after a short delay to ensure backgrounds are rendered
+            setTimeout(hidePreloader, 800);
+        });
+
+        // Also hide preloader when window is fully loaded as backup
+        window.addEventListener('load', () => {
+            setTimeout(hidePreloader, 300);
+        });
 
         // Petal card hover effects with sound visualization
         document.querySelectorAll('.petal-card').forEach(card => {
